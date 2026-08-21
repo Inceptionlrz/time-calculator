@@ -1,0 +1,8 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+# 测试打包产物（由 scripts/run-tests.mjs 生成，每次运行重新生成）
+tests/*.cjs
+tests/*.mjs
