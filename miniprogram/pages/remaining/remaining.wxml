@@ -1,0 +1,55 @@
+<!-- pages/remaining/remaining.wxml -->
+<view class="container">
+  <view class="card">
+    <view class="section-title">起始日期</view>
+    <picker mode="date" value="{{startDate}}" bindchange="onStartChange">
+      <view class="picker-row">
+        <text>{{startDate}} {{startWeekday}}</text>
+        <text class="picker-arrow">▾</text>
+      </view>
+    </picker>
+
+    <view class="section-title">截止日期</view>
+    <picker mode="date" value="{{deadlineDate}}" bindchange="onDeadlineChange">
+      <view class="picker-row">
+        <text>{{deadlineDate}} {{deadlineWeekday}}</text>
+        <text class="picker-arrow">▾</text>
+      </view>
+    </picker>
+
+    <view class="section-title">计算口径</view>
+    <view class="seg">
+      <view class="seg-item {{type==='workday'?'active':''}}" data-type="workday" bindtap="onTypeTap">工作日</view>
+      <view class="seg-item {{type==='calendar'?'active':''}}" data-type="calendar" bindtap="onTypeTap">日历日</view>
+    </view>
+
+    <view class="section-title">地区</view>
+    <picker range="{{regionNames}}" value="{{regionIndex}}" bindchange="onRegionChange">
+      <view class="picker-row">
+        <text>{{regionNames[regionIndex]}}</text>
+        <text class="picker-arrow">▾</text>
+      </view>
+    </picker>
+
+    <view class="btn-primary" bindtap="onCalc">计算间隔</view>
+  </view>
+
+  <view class="card result" wx:if="{{result}}">
+    <view class="result-title">两者相差</view>
+    <view class="result-date">{{result.countedDays}} <text class="unit">{{result.typeLabel}}</text></view>
+    <view class="result-meta">{{result.spanText}}</view>
+
+    <view class="stat-grid">
+      <view class="stat"><text class="stat-num">{{result.weekendDays}}</text><text class="stat-label">周末</text></view>
+      <view class="stat"><text class="stat-num">{{result.holidayDays}}</text><text class="stat-label">节假日</text></view>
+      <view class="stat"><text class="stat-num">{{result.makeupWorkdays}}</text><text class="stat-label">补班日</text></view>
+      <view class="stat"><text class="stat-num">{{result.skippedOffDays}}</text><text class="stat-label">跳过非工作日</text></view>
+    </view>
+
+    <button class="share-btn" open-type="share">分享给同事</button>
+  </view>
+
+  <view class="card error" wx:if="{{error}}">
+    <text>{{error}}</text>
+  </view>
+</view>

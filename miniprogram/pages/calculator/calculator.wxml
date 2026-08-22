@@ -1,0 +1,76 @@
+<!-- pages/calculator/calculator.wxml -->
+<view class="container">
+  <view class="card">
+    <view class="section-title">起始日期</view>
+    <picker mode="date" value="{{startDate}}" bindchange="onStartChange">
+      <view class="picker-row">
+        <text>{{startDate}} {{startWeekday}}</text>
+        <text class="picker-arrow">▾</text>
+      </view>
+    </picker>
+
+    <view class="section-title">期限长度（天）</view>
+    <input class="input" type="number" value="{{length}}" bindinput="onLengthInput" placeholder="请输入正整数" />
+
+    <view class="section-title">计算口径</view>
+    <view class="seg">
+      <view class="seg-item {{type==='workday'?'active':''}}" data-type="workday" bindtap="onTypeTap">工作日</view>
+      <view class="seg-item {{type==='calendar'?'active':''}}" data-type="calendar" bindtap="onTypeTap">日历日</view>
+      <view class="seg-item {{type==='natural'?'active':''}}" data-type="natural" bindtap="onTypeTap">自然日</view>
+    </view>
+
+    <view class="section-title">方向</view>
+    <view class="seg">
+      <view class="seg-item {{direction==='forward'?'active':''}}" data-dir="forward" bindtap="onDirTap">向后推算</view>
+      <view class="seg-item {{direction==='backward'?'active':''}}" data-dir="backward" bindtap="onDirTap">向前推算</view>
+    </view>
+
+    <view class="switch-row">
+      <text>包含起始日当天</text>
+      <switch checked="{{includeStartDay}}" bindchange="onIncludeChange" color="#2563eb" />
+    </view>
+
+    <view class="section-title">地区</view>
+    <picker range="{{regionNames}}" value="{{regionIndex}}" bindchange="onRegionChange">
+      <view class="picker-row">
+        <text>{{regionNames[regionIndex]}}</text>
+        <text class="picker-arrow">▾</text>
+      </view>
+    </picker>
+
+    <view class="btn-primary" bindtap="onCalc">计算截止日</view>
+  </view>
+
+  <view class="card result" wx:if="{{result}}">
+    <view class="result-title">计算结果</view>
+    <view class="result-date">{{result.deadlineText}}</view>
+    <view class="result-weekday">{{result.deadlineWeekday}}</view>
+    <view class="result-meta">{{result.directionLabel}}推算 {{result.length}} 个{{result.typeLabel}}</view>
+
+    <view class="stat-grid">
+      <view class="stat"><text class="stat-num">{{result.countedDays}}</text><text class="stat-label">计入天数</text></view>
+      <view class="stat"><text class="stat-num">{{result.weekendDays}}</text><text class="stat-label">周末</text></view>
+      <view class="stat"><text class="stat-num">{{result.holidayDays}}</text><text class="stat-label">节假日</text></view>
+      <view class="stat"><text class="stat-num">{{result.makeupWorkdays}}</text><text class="stat-label">补班日</text></view>
+    </view>
+
+    <view class="detail-block" wx:if="{{result.hasWeekend}}">
+      <text class="detail-label">途经周末：</text>
+      <text class="detail-sample">{{result.weekendSampleText}}</text>
+    </view>
+    <view class="detail-block" wx:if="{{result.hasHoliday}}">
+      <text class="detail-label">途经节假日：</text>
+      <text class="detail-sample">{{result.holidaySampleText}}</text>
+    </view>
+    <view class="detail-block" wx:if="{{result.hasMakeup}}">
+      <text class="detail-label">计入补班日：</text>
+      <text class="detail-sample">{{result.makeupSampleText}}</text>
+    </view>
+
+    <button class="share-btn" open-type="share">分享给同事</button>
+  </view>
+
+  <view class="card error" wx:if="{{error}}">
+    <text>{{error}}</text>
+  </view>
+</view>

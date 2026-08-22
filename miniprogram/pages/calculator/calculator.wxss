@@ -1,0 +1,135 @@
+/* pages/calculator/calculator.wxss */
+.container {
+  padding-bottom: 40rpx;
+}
+
+.input {
+  background: #f3f4f6;
+  border-radius: 12rpx;
+  padding: 20rpx;
+  font-size: 30rpx;
+  margin-bottom: 8rpx;
+}
+
+.seg {
+  display: flex;
+  background: #f3f4f6;
+  border-radius: 12rpx;
+  padding: 6rpx;
+  margin-bottom: 8rpx;
+}
+
+.seg-item {
+  flex: 1;
+  text-align: center;
+  padding: 16rpx 0;
+  font-size: 26rpx;
+  color: #6b7280;
+  border-radius: 10rpx;
+  transition: all 0.15s;
+}
+
+.seg-item.active {
+  background: #fff;
+  color: #2563eb;
+  font-weight: 600;
+  box-shadow: 0 2rpx 8rpx rgba(37, 99, 235, 0.15);
+}
+
+.switch-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #e5e7eb;
+  font-size: 28rpx;
+}
+
+.picker-arrow {
+  color: #9ca3af;
+}
+
+.result {
+  text-align: center;
+}
+
+.result-title {
+  font-size: 26rpx;
+  color: #8a8f99;
+  margin-bottom: 12rpx;
+}
+
+.result-date {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: #2563eb;
+  letter-spacing: 2rpx;
+}
+
+.result-weekday {
+  font-size: 28rpx;
+  color: #6b7280;
+  margin-top: 6rpx;
+}
+
+.result-meta {
+  font-size: 26rpx;
+  color: #9ca3af;
+  margin-top: 10rpx;
+}
+
+.stat-grid {
+  display: flex;
+  margin-top: 28rpx;
+  border-top: 1rpx solid #eef0f3;
+  padding-top: 24rpx;
+}
+
+.stat {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-num {
+  font-size: 40rpx;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.stat-label {
+  font-size: 22rpx;
+  color: #9ca3af;
+  margin-top: 6rpx;
+}
+
+.detail-block {
+  margin-top: 20rpx;
+  text-align: left;
+  font-size: 24rpx;
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.detail-label {
+  color: #374151;
+  font-weight: 600;
+}
+
+.detail-sample {
+  color: #9ca3af;
+}
+
+.share-btn {
+  margin-top: 28rpx;
+  background: #eef2ff;
+  color: #2563eb;
+  font-size: 28rpx;
+  border-radius: 12rpx;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 26rpx;
+}
