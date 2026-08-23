@@ -6,3 +6,5 @@ dist-ssr
 # 测试打包产物（由 scripts/run-tests.mjs 生成，每次运行重新生成）
 tests/*.cjs
 tests/*.mjs
+# 微信开发者工具本地私有配置（机器相关，自动生成，勿提交）
+miniprogram/project.private.config.json

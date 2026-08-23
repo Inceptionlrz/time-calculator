@@ -1,0 +1,30 @@
+{
+  "pages": [
+    "pages/calculator/calculator",
+    "pages/remaining/remaining"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#2563eb",
+    "navigationBarTitleText": "时间计算器",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#f5f7fa"
+  },
+  "tabBar": {
+    "color": "#8a8f99",
+    "selectedColor": "#2563eb",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/calculator/calculator",
+        "text": "期限推算"
+      },
+      {
+        "pagePath": "pages/remaining/remaining",
+        "text": "间隔反推"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
